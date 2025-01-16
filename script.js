@@ -11,10 +11,14 @@ const factorial = (value) => {
   return product;
 };
 
-let number1 = 0;
+let number1;
 let number2 = 0;
-let operator
-let sum = number1;
+let operator;
+let sum = 0;
+
+let calculation = [];
+
+
 
 
 
@@ -22,19 +26,20 @@ function operate() {
     console.log("number 1 before operation is: " + number1);
     console.log("number 2 before operation is: " + number2);
     if (operator == '+'){
-        number2 = add(number1, number2)
+        number2 = add(number2, number1)
     }
     if (operator == '-'){
-        number2 = subtract(number1, number2)
+        number2 = subtract(number2, number1)
     }
     if (operator == '*'){
-        number2 = multiply(number1, number2)
+        number2 = multiply(number2, number1)
     }
     if (operator == '/'){
-        number2 = divide(number1, number2)
+        number2 = divide(number2, number1)
     }
     console.log(number2)
-    return Number(number2)
+    sum = number2
+    return Number(sum)
 }
 
 
@@ -43,6 +48,11 @@ function operate() {
 const buttonNumList = document.querySelectorAll('.num');   
 const buttonOperatorList = document.querySelectorAll('.operator'); 
 
+
+document.getElementById('button-equal').addEventListener('click', () => { 
+    document.getElementById('calculator-display').textContent = operate(); 
+}); 
+
 buttonNumList.forEach(button => {
     document.getElementById(button.id).addEventListener('click', () => { 
         number1 = Number(document.getElementById(button.id).textContent);
@@ -50,17 +60,24 @@ buttonNumList.forEach(button => {
     });
 });
 
+
+//Operators Update
 buttonOperatorList.forEach(button => {
     document.getElementById(button.id).addEventListener('click', () => { 
         operator = document.getElementById(button.id).textContent;
-        operate();
+       
     }); 
+    operate();
 });
 
+
+//AC Button
 document.getElementById('button-AC').addEventListener('click', () => {
     document.getElementById('calculator-display').textContent = 0;
     number1 = 0;
+    number2 = 0;
 })
+
 
 
 function updateDisplay(buttonPressed){
