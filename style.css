@@ -34,16 +34,20 @@ body {
 
 
 #calculator-display {
-    display: flex;
-    justify-content: end;
-    align-items: end;
-    height: 100px;
-    width: 400px;
+
+   
     border-style: solid;
     border-color: black;
     background-color: white;
+    font-family: "Roboto", Times, serif;
+    font-size: 60px;
+    text-align: end;
+    height: 100px;
+    width: 400px;
     margin-bottom: 5px;
-    padding-right: 5px;
+    padding-right: 16px;
+    box-sizing: border-box;
+
     
 }
 
