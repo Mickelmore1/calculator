@@ -35,7 +35,7 @@ function updateDisplay(){
             
             calculator.numberA += numButton.textContent;
             getCalculatorDisplay.value = calculator.numberA;
-            console.log(calculator.numberA)
+
             
         })     
     });
@@ -45,11 +45,7 @@ function updateOperator(){
     const buttonOperatorList = document.querySelectorAll('.operator');
     buttonOperatorList.forEach(operatorButtonPress => {
         operatorButtonPress.addEventListener('click', () => {
-
-            if (calculator.numberB !== 0){
-                operate(calculator.operator, calculator.numberA, calculator.numberB);
-            }
-  
+            operate(calculator.operator, calculator.numberA, calculator.numberB);
             calculator.operator = operatorButtonPress.textContent;
             calculator.numberB = calculator.numberA;
             calculator.numberA = 0;
