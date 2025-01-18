@@ -11,16 +11,6 @@ const factorial = (value) => {
   return product;
 };
 
-function operate(operator, numberA, numberB) {
-    console.log(operator);
-    console.log(numberA);
-    console.log(numberB);
-    if (operator == '+') { calculator.numberA = add(numberA, numberB) };
-    if (operator == '-') { calculator.numberA = subtract(numberA, numberB) };
-    if (operator == '*') { calculator.numberA =  multiply(numberA, numberB) };
-    if (operator == '/') { calculator.numberA = divide(numberA, numberB) };
-    return getCalculatorDisplay.value = calculator.numberA;
-}
 
 let calculator = {
     numberA: 0,
@@ -40,14 +30,14 @@ function updateDisplay(){
     buttonNumList.forEach(numButton => {
         numButton.addEventListener('click', () => {
 
-            
             if(calculator.numberA == 0){ calculator.numberA = ''};
+         
             
             calculator.numberA += numButton.textContent;
             getCalculatorDisplay.value = calculator.numberA;
             console.log(calculator.numberA)
-        })
-        
+            
+        })     
     });
 }
 
@@ -55,10 +45,14 @@ function updateOperator(){
     const buttonOperatorList = document.querySelectorAll('.operator');
     buttonOperatorList.forEach(operatorButtonPress => {
         operatorButtonPress.addEventListener('click', () => {
+
+            if (calculator.numberB !== 0){
+                operate(calculator.operator, calculator.numberA, calculator.numberB);
+            }
+  
             calculator.operator = operatorButtonPress.textContent;
             calculator.numberB = calculator.numberA;
             calculator.numberA = 0;
-         
         })
     })
 }
@@ -71,6 +65,18 @@ function pressEqual(){
         calculator.operator = undefined;
     })
 }
+
+function operate(operator, numberA, numberB) {
+    console.log(operator);
+    console.log(numberA);
+    console.log(numberB);
+    if (operator == '+') { calculator.numberA = add(numberA, numberB) };
+    if (operator == '-') { calculator.numberA = subtract(numberA, numberB) };
+    if (operator == '*') { calculator.numberA =  multiply(numberA, numberB) };
+    if (operator == '/') { calculator.numberA = divide(numberA, numberB) };
+    return getCalculatorDisplay.value = calculator.numberA;
+}
+
 
 function pressAC(){
     const acButton = document.getElementById('button-AC')
