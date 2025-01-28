@@ -6,7 +6,7 @@ body {
     font-family: "Orbitron", Times, serif;
     font-size: 60px;
     font-weight: bold;
-    background-color: #727D73;
+    background: radial-gradient(#e48f20, #7632cf);
 }
 
 
@@ -20,6 +20,7 @@ body {
     border-color: black;
     background-color: #F0F0D7;
     border-radius: 10px;
+    box-shadow: 0px 0px 20px black;
 }
 
 #calculator-container {
